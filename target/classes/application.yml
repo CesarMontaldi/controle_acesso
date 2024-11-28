@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: controleAcesso
+
+server:
+  port: 8081
