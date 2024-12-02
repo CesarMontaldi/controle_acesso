@@ -6,8 +6,11 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public record CadastroUsuarioDTO(
+
+        UUID id,
 
         @NotBlank(message = "campo obrigatorio")
         String nome,
@@ -25,6 +28,6 @@ public record CadastroUsuarioDTO(
         List<String> permissoes) {
 
         public CadastroUsuarioDTO(Usuario usuario) {
-                this(usuario.getNome(), usuario.getLogin(), usuario.getPassword(), usuario.getDataNascimento(), usuario.getPermissoes());
+                this(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getPassword(), usuario.getDataNascimento(), usuario.getPermissoes());
         }
 }

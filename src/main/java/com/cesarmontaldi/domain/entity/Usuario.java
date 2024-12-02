@@ -26,10 +26,32 @@ public class Usuario {
     @Column(columnDefinition = "varchar[]")
     private List<String> permissoes;
 
+    public void atualizarInformacoes(CadastroUsuarioDTO dto) {
 
-    public static Usuario toEntityCadastroDTO(CadastroUsuarioDTO dto) {
+        if (dto.id() != null) {
+            this.id = dto.id();
+        }
+        if (dto.nome() != null) {
+            this.nome = dto.nome();
+        }
+        if (dto.dataNascimento() != null) {
+            this.dataNascimento = dto.dataNascimento();
+        }
+        if (dto.login() != null){
+            this.login = dto.login();
+        }
+        if (dto.password() != null) {
+            this.password = dto.password();
+        }
+    }
+
+
+    public static Usuario usuarioCadastroDTOtoEntity(CadastroUsuarioDTO dto) {
         Usuario usuario = new Usuario();
 
+        if (dto.id() != null) {
+            usuario.setId(dto.id());
+        }
         usuario.setNome(dto.nome());
         usuario.setLogin(dto.login());
         usuario.setPassword(dto.password());
@@ -39,9 +61,12 @@ public class Usuario {
         return usuario;
     }
 
-    public static Usuario toEntityUsuarioDTO(UsuarioDTO dto) {
+    public static Usuario UsuarioDTOtoEntity(UsuarioDTO dto) {
         Usuario usuario = new Usuario();
 
+        if (dto.id() != null) {
+            usuario.setId(dto.id());
+        }
         usuario.setNome(dto.nome());
         usuario.setLogin(dto.login());
         usuario.setDataNascimento(dto.dataNascimento());

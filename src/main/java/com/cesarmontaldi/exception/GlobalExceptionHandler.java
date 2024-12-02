@@ -73,18 +73,18 @@ public class GlobalExceptionHandler {
         );
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse handleErrosNaoTratados(RuntimeException e, HttpServletRequest request) {
-
-        return new ErrorResponse(
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")),
-                "Ocorreu um erro inesperado. Entre em contato com o provedor de serviços.",
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                request.getRequestURI(),
-                List.of()
-        );
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public ErrorResponse handleErrosNaoTratados(RuntimeException e, HttpServletRequest request) {
+//
+//        return new ErrorResponse(
+//                LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")),
+//                "Ocorreu um erro inesperado. Entre em contato com o provedor de serviços.",
+//                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+//                request.getRequestURI(),
+//                List.of()
+//        );
+//    }
 
 
 }
