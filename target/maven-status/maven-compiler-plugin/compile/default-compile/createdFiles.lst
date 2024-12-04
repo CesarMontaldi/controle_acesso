@@ -10,5 +10,8 @@ com\cesarmontaldi\api\dto\UsuarioDTO.class
 com\cesarmontaldi\ControleAcessoApplication.class
 com\cesarmontaldi\domain\service\UsuarioService.class
 com\cesarmontaldi\api\controller\UsuarioController.class
+com\cesarmontaldi\domain\entity\UserRole.class
+com\cesarmontaldi\security\CustomAuthenticationProvider.class
 com\cesarmontaldi\domain\entity\Usuario.class
 com\cesarmontaldi\api\controller\GenericController.class
+com\cesarmontaldi\security\CustomAuthentication.class

@@ -2,13 +2,10 @@ package com.cesarmontaldi.domain.entity;
 
 import com.cesarmontaldi.api.dto.CadastroUsuarioDTO;
 import com.cesarmontaldi.api.dto.UsuarioDTO;
-import io.hypersistence.utils.hibernate.type.array.ListArrayType;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,12 +16,11 @@ public class Usuario {
     private UUID id;
     private String nome;
     private LocalDate dataNascimento;
+    @Column(unique = true)
     private String login;
     private String password;
-
-    @Type(ListArrayType.class)
-    @Column(columnDefinition = "varchar[]")
-    private List<String> permissoes;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     public void atualizarInformacoes(CadastroUsuarioDTO dto) {
 
@@ -56,7 +52,7 @@ public class Usuario {
         usuario.setLogin(dto.login());
         usuario.setPassword(dto.password());
         usuario.setDataNascimento(dto.dataNascimento());
-        usuario.setPermissoes(dto.permissoes());
+        usuario.setRole(dto.role());
 
         return usuario;
     }
@@ -70,7 +66,7 @@ public class Usuario {
         usuario.setNome(dto.nome());
         usuario.setLogin(dto.login());
         usuario.setDataNascimento(dto.dataNascimento());
-        usuario.setPermissoes(dto.permissoes());
+        usuario.setRole(dto.role());
 
         return usuario;
     }

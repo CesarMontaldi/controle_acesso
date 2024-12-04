@@ -9,9 +9,11 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,34 +21,21 @@ import java.util.UUID;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public Usuario salvar(CadastroUsuarioDTO dto) {
         if (usuarioRepository.existsByLogin(dto.login())) {
             throw new RegistroDuplicadoException("Usuário já cadastrado.");
         }
         var usuario = Usuario.usuarioCadastroDTOtoEntity(dto);
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
         return usuarioRepository.save(usuario);
     }
 
-
     public Usuario atualizar(CadastroUsuarioDTO dto) {
         Usuario usuario = usuarioRepository.getReferenceById(dto.id());
-
         usuario.atualizarInformacoes(dto);
-
-        return usuario;
-    }
-
-    public Usuario atualizarPermissoes(CadastroUsuarioDTO dto) {
-        Usuario usuario = usuarioRepository.getReferenceById(dto.id());
-
-        dto.permissoes()
-                .forEach(perm -> {
-                    if (!usuario.getPermissoes().contains(perm)){
-                        usuario.getPermissoes().add(perm);
-                    }
-                });
 
         return usuario;
     }
@@ -54,6 +43,10 @@ public class UsuarioService {
     public Usuario obterUsuarioPorID(UUID idUsuario) {
         return usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado."));
+    }
+
+    public Usuario obterPorLogin(String login) {
+        return usuarioRepository.findByLogin(login);
     }
 
     public List<UsuarioDTO> listarUsuarios(Pageable paginacao) {

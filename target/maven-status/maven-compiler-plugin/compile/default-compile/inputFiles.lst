@@ -4,6 +4,7 @@ D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontal
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\api\dto\UsuarioDTO.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\config\securityConfig.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\ControleAcessoApplication.java
+D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\domain\entity\UserRole.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\domain\entity\Usuario.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\domain\repository\UsuarioRepository.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\domain\service\UsuarioService.java
@@ -12,3 +13,5 @@ D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontal
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\exception\GlobalExceptionHandler.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\exception\OperacaNaoPermitidaException.java
 D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\exception\RegistroDuplicadoException.java
+D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\security\CustomAuthentication.java
+D:\cursos\springBoot-udemy\security\controleAcesso\src\main\java\com\cesarmontaldi\security\CustomAuthenticationProvider.java

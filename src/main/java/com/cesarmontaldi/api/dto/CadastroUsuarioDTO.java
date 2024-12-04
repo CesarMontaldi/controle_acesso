@@ -1,5 +1,6 @@
 package com.cesarmontaldi.api.dto;
 
+import com.cesarmontaldi.domain.entity.UserRole;
 import com.cesarmontaldi.domain.entity.Usuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,9 +26,9 @@ public record CadastroUsuarioDTO(
         LocalDate dataNascimento,
 
         @NotNull(message = "campo obrigatorio")
-        List<String> permissoes) {
+        UserRole role) {
 
         public CadastroUsuarioDTO(Usuario usuario) {
-                this(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getPassword(), usuario.getDataNascimento(), usuario.getPermissoes());
+                this(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getPassword(), usuario.getDataNascimento(), usuario.getRole());
         }
 }
